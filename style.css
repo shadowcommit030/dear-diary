@@ -1,0 +1,129 @@
+:root {
+  --desk: #27413f; --desk-dark: #1b2f2d;
+  --paper: #fffef8; --rule: #bcd3e6; --margin: #e58f9a;
+  --ink: #1f2f5c; --brass: #c79a45; --danger: #a64b4b;
+  --line: 36px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Lora, Georgia, serif; color: #f4efe3; min-height: 100vh;
+  background: radial-gradient(circle at 30% 0%, var(--desk), var(--desk-dark));
+  background-attachment: fixed;
+}
+.hidden { display: none !important; }
+button, input, select, textarea { font-family: inherit; }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--brass); outline-offset: 2px;
+}
+
+/* BUTTONS */
+.pill {
+  border: 0; border-radius: 999px; padding: 10px 18px; font-size: 15px; cursor: pointer;
+  color: #fff; background: rgba(255,255,255,.14);
+}
+.pill:hover:not(:disabled) { background: rgba(255,255,255,.24); }
+.pill.brass { background: var(--brass); color: #2a1d08; font-weight: 700; }
+.pill.brass:hover:not(:disabled) { background: #d6aa57; }
+.pill.danger { background: transparent; color: #f0b3b3; box-shadow: inset 0 0 0 1px #a66; }
+.pill:disabled { opacity: .35; cursor: default; }
+
+/* LOGIN COVER */
+.screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.cover {
+  width: 100%; max-width: 400px; padding: 44px 34px; text-align: center; color: #f3dfae;
+  background: linear-gradient(150deg, #7b3f4a, #4a222c); border-radius: 8px 20px 20px 8px;
+  border-left: 14px solid #34171e; box-shadow: 0 25px 60px rgba(0,0,0,.45), inset 0 0 0 2px rgba(243,223,174,.35);
+}
+.lock { font-size: 46px; margin-bottom: 10px; }
+.cover h1 { font-size: 30px; margin-bottom: 8px; }
+.subtitle { opacity: .8; margin-bottom: 28px; font-family: Caveat, cursive; font-size: 24px; }
+.cover input {
+  width: 100%; padding: 13px; margin-bottom: 14px; border: 0; border-radius: 10px;
+  font-size: 16px; background: #fffdf3; color: #2b2b2b;
+}
+.cover button { width: 100%; padding: 13px; border: 0; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; background: #e2bf74; color: #3b1d24; }
+#loginMessage { margin-top: 14px; color: #ffc4c4; min-height: 1.2em; }
+
+/* LAYOUT */
+#diaryScreen { height: 100vh; height: 100dvh; display: flex; flex-direction: column; }
+.topbar { height: 64px; flex-shrink: 0; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+.topbar .left { display: flex; align-items: center; gap: 14px; }
+.topbar h1 { font-size: 24px; }
+#menuBtn { display: none; }
+.app { flex: 1; min-height: 0; display: flex; gap: 24px; padding: 0 24px 20px; }
+
+/* ENTRY LIST */
+#sidebar {
+  width: 260px; flex-shrink: 0; padding: 16px; overflow-y: auto; border-radius: 14px;
+  background: rgba(255,255,255,.08);
+}
+#sidebar .pill { width: 100%; margin-bottom: 12px; }
+#search {
+  width: 100%; padding: 10px 14px; margin-bottom: 12px; border: 0; border-radius: 999px;
+  background: rgba(255,255,255,.14); color: #fff; font-size: 15px;
+}
+#search::placeholder { color: rgba(255,255,255,.6); }
+.entry-item { padding: 11px 13px; margin-bottom: 8px; border-radius: 10px; cursor: pointer; background: rgba(255,255,255,.07); }
+.entry-item:hover { background: rgba(255,255,255,.15); }
+.entry-item.active { background: var(--paper); color: var(--ink); }
+.entry-item strong { display: block; font-size: 15px; }
+.entry-date { font-size: 12px; opacity: .7; margin-top: 3px; }
+
+/* THE PAGE */
+.book { flex: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; align-items: center; }
+.paper {
+  position: relative; width: 100%; max-width: 780px; flex: 1; min-height: 0; overflow: hidden;
+  display: flex; flex-direction: column; background: var(--paper); color: var(--ink);
+  border-radius: 6px 16px 16px 6px; box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+.paper::before { /* red margin line */
+  content: ""; position: absolute; top: 32px; bottom: 0; left: 56px; width: 2px;
+  background: var(--margin); opacity: .8; z-index: 1; pointer-events: none;
+}
+.binding {
+  height: 32px; flex-shrink: 0; background-color: #efe3cf;
+  background-image: radial-gradient(circle at 50% 50%, #8d7a5f 5px, transparent 6px);
+  background-size: 44px 32px; background-position: 22px 0;
+}
+.page-head, #entryContent {
+  background-image: linear-gradient(transparent calc(var(--line) - 1px), var(--rule) calc(var(--line) - 1px));
+  background-size: 100% var(--line);
+}
+.page-head { flex-shrink: 0; padding: 0 32px 0 76px; }
+.row { height: var(--line); display: flex; align-items: center; gap: 12px; }
+.page-head input, .page-head select {
+  height: var(--line); border: 0; border-radius: 0; background: transparent; color: var(--ink);
+  font: 18px/var(--line) Caveat, cursive; padding: 0; margin: 0;
+}
+#entryDate { width: auto; font-weight: 700; }
+#mood { margin-left: auto; width: auto; max-width: 50%; cursor: pointer; }
+#entryTitle { width: 100%; font-size: 30px; font-weight: 700; }
+::placeholder { color: #9aa6c4; opacity: 1; }
+#entryContent {
+  flex: 1; width: 100%; border: 0; margin: 0; resize: none; background-attachment: local;
+  padding: 0 32px 0 76px; font: 25px/var(--line) Caveat, cursive; color: var(--ink);
+}
+
+/* UNDER THE PAGE */
+.page-foot { width: 100%; max-width: 780px; margin-top: 14px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; }
+#pageNum { font-family: Caveat, cursive; font-size: 22px; min-width: 110px; text-align: center; }
+#saveMessage { margin-top: 8px; min-height: 1.3em; color: #b6e3bd; font-size: 15px; }
+
+/* PHONE */
+@media (max-width: 760px) {
+  .topbar { padding: 0 14px; }
+  #menuBtn { display: inline-block; }
+  .app { padding: 0 10px 12px; }
+  #sidebar {
+    position: fixed; top: 64px; left: 10px; bottom: 10px; width: min(300px, 85vw); z-index: 20;
+    background: #1e3633; box-shadow: 0 10px 40px rgba(0,0,0,.5);
+    transform: translateX(-120%); transition: transform .25s ease;
+  }
+  #sidebar.open { transform: none; }
+  .paper::before { left: 40px; }
+  .page-head { padding-left: 58px; padding-right: 16px; }
+  #entryContent { padding-left: 58px; padding-right: 16px; font-size: 23px; }
+  #entryTitle { font-size: 26px; }
+  .page-foot .pill { padding: 9px 13px; font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { #sidebar { transition: none; } }

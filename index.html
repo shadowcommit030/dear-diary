@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Secret Diary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Lora:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<section id="loginScreen" class="screen hidden">
+  <form id="loginForm" class="cover">
+    <div class="lock">🔐</div>
+    <h1>My Secret Diary</h1>
+    <p class="subtitle">A little place that belongs only to me.</p>
+    <input id="email" type="email" placeholder="Email" autocomplete="username" required>
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password" required>
+    <button type="submit">Open my diary</button>
+    <p id="loginMessage"></p>
+  </form>
+</section>
+
+<section id="diaryScreen" class="hidden">
+  <header class="topbar">
+    <div class="left">
+      <button id="menuBtn" class="pill ghost" aria-label="Show entries">☰ Entries</button>
+      <h1>My Diary</h1>
+    </div>
+    <button id="lockBtn" class="pill ghost">🔒 Lock</button>
+  </header>
+
+  <div class="app">
+    <aside id="sidebar">
+      <button id="newBtn" class="pill brass">+ New page</button>
+      <input id="search" type="text" placeholder="Search my pages">
+      <div id="entryList"></div>
+    </aside>
+
+    <div class="book">
+      <article class="paper">
+        <div class="binding"></div>
+        <div class="page-head">
+          <div class="row">
+            <input id="entryDate" type="date" aria-label="Date">
+            <select id="mood" aria-label="Mood">
+              <option value="">Mood</option>
+              <option value="😊 Happy">😊 Happy</option>
+              <option value="🥰 Loved">🥰 Loved</option>
+              <option value="😌 Peaceful">😌 Peaceful</option>
+              <option value="😔 Sad">😔 Sad</option>
+              <option value="😡 Angry">😡 Angry</option>
+              <option value="😭 Emotional">😭 Emotional</option>
+              <option value="🤔 Confused">🤔 Confused</option>
+              <option value="✨ Excited">✨ Excited</option>
+            </select>
+          </div>
+          <div class="row">
+            <input id="entryTitle" type="text" placeholder="Title of today's page" aria-label="Title">
+          </div>
+        </div>
+        <textarea id="entryContent" placeholder="Dear Diary,"></textarea>
+      </article>
+
+      <div class="page-foot">
+        <button id="prevBtn" class="pill ghost">‹ Older</button>
+        <span id="pageNum"></span>
+        <button id="nextBtn" class="pill ghost">Newer ›</button>
+        <button id="saveBtn" class="pill brass">💾 Save page</button>
+        <button id="deleteBtn" class="pill danger">🗑 Delete</button>
+      </div>
+      <p id="saveMessage"></p>
+    </div>
+  </div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>

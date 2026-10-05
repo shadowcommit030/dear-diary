@@ -3,10 +3,10 @@
    ===================================== */
 
 const SUPABASE_URL =
-    "PASTE_YOUR_SUPABASE_URL_HERE";
+    "sb_publishable_9-svyblsWd6-IM9_8k-54A_RNmm4XCB";
 
 const SUPABASE_ANON_KEY =
-    "PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3YXZ5bGlsZmFtdnhxc3V0Y3Z2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEyMDAyMjYsImV4cCI6MjEwNjc3NjIyNn0.DzKBBbC5hXk5mDMHNrtKAw93Tkf5424jHH9U_EJHW3I";
 
 
 const supabaseClient =

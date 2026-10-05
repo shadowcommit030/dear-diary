@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Secret Diary</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+    <!-- LOGIN SCREEN -->
+
+    <section id="loginScreen" class="screen">
+
+        <div class="login-box">
+
+            <div class="lock">🔐</div>
+
+            <h1>My Secret Diary</h1>
+
+            <p class="subtitle">
+                A little place that belongs only to me.
+            </p>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="Email"
+            >
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Password"
+            >
+
+            <button onclick="login()">
+                Unlock My Diary
+            </button>
+
+            <p id="loginMessage"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DIARY SCREEN -->
+
+    <section id="diaryScreen" class="hidden">
+
+        <header>
+
+            <div>
+                <h1>🌙 My Diary</h1>
+
+                <p>
+                    My thoughts. My memories. My little world.
+                </p>
+            </div>
+
+            <button
+                class="lock-button"
+                onclick="logout()">
+                🔒 Lock
+            </button>
+
+        </header>
+
+
+        <main>
+
+            <aside>
+
+                <button
+                    class="new-entry"
+                    onclick="newEntry()">
+                    + New Entry
+                </button>
+
+                <input
+                    id="search"
+                    type="text"
+                    placeholder="🔍 Search diary..."
+                    oninput="searchEntries()"
+                >
+
+                <h3>My Entries</h3>
+
+                <div id="entryList"></div>
+
+            </aside>
+
+
+            <article class="editor">
+
+                <div class="editor-top">
+
+                    <input
+                        id="entryTitle"
+                        type="text"
+                        placeholder="Give this day a title..."
+                    >
+
+                    <input
+                        id="entryDate"
+                        type="date"
+                    >
+
+                </div>
+
+
+                <select id="mood">
+
+                    <option value="">
+                        How am I feeling?
+                    </option>
+
+                    <option value="😊 Happy">
+                        😊 Happy
+                    </option>
+
+                    <option value="🥰 Loved">
+                        🥰 Loved
+                    </option>
+
+                    <option value="😌 Peaceful">
+                        😌 Peaceful
+                    </option>
+
+                    <option value="😔 Sad">
+                        😔 Sad
+                    </option>
+
+                    <option value="😡 Angry">
+                        😡 Angry
+                    </option>
+
+                    <option value="😭 Emotional">
+                        😭 Emotional
+                    </option>
+
+                    <option value="🤔 Confused">
+                        🤔 Confused
+                    </option>
+
+                    <option value="✨ Excited">
+                        ✨ Excited
+                    </option>
+
+                </select>
+
+
+                <textarea
+                    id="entryContent"
+                    placeholder="Dear Diary...
+
+Write whatever you want here.
+
+Nobody needs to understand.
+This is your space."
+                ></textarea>
+
+
+                <div class="buttons">
+
+                    <button onclick="saveEntry()">
+                        💾 Save Entry
+                    </button>
+
+                    <button
+                        class="delete"
+                        onclick="deleteEntry()">
+                        🗑 Delete
+                    </button>
+
+                </div>
+
+                <p id="saveMessage"></p>
+
+            </article>
+
+        </main>
+
+    </section>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
